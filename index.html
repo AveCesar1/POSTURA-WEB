@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFFFFF">
+<title>POSTURA — Entrenamiento postural inteligente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR (escritorio) ============ -->
+  <aside class="sidebar" role="navigation" aria-label="Navegación principal">
+    <div class="sidebar__brand">
+      <span class="sidebar__brand-dot"></span>
+      POSTURA
+    </div>
+
+    <nav class="sidebar__nav">
+      <button class="nav-item is-active" data-view="inicio" aria-current="page">
+        <span class="nav-item__icon" aria-hidden="true">🏠</span>
+        <span class="nav-item__label">Inicio</span>
+      </button>
+      <button class="nav-item" data-view="postura">
+        <span class="nav-item__icon" aria-hidden="true">📊</span>
+        <span class="nav-item__label">Mi postura</span>
+      </button>
+      <button class="nav-item" data-view="evolucion">
+        <span class="nav-item__icon" aria-hidden="true">📈</span>
+        <span class="nav-item__label">Evolución</span>
+      </button>
+      <button class="nav-item" data-view="recomendaciones">
+        <span class="nav-item__icon" aria-hidden="true">💡</span>
+        <span class="nav-item__label">Consejos</span>
+      </button>
+      <button class="nav-item" data-view="configuracion">
+        <span class="nav-item__icon" aria-hidden="true">⚙️</span>
+        <span class="nav-item__label">Configuración</span>
+      </button>
+      <button class="nav-item" data-view="sobre-nosotros">
+        <span class="nav-item__icon" aria-hidden="true">👥</span>
+        <span class="nav-item__label">Sobre nosotros</span>
+      </button>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__device">
+        <span class="dot dot--ok"></span>
+        <div>
+          <div class="sidebar__device-name">Silla POSTURA</div>
+          <div class="sidebar__device-status">Conectada · hace 2 min</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ ÁREA PRINCIPAL ============ -->
+  <main class="main">
+
+    <header class="topbar">
+      <div class="topbar__brand" aria-hidden="true">POSTURA</div>
+      <h1 class="topbar__title" id="topbarTitle">Inicio</h1>
+      <div class="topbar__actions">
+        <button class="icon-btn" aria-label="Notificaciones" id="bellBtn">🔔</button>
+        <div class="avatar" aria-label="Perfil de Carlos">C</div>
+      </div>
+    </header>
+
+    <div class="view-container" id="viewContainer">
+
+      <!-- ============================================= -->
+      <!-- VISTA 1 — INICIO                              -->
+      <!-- ============================================= -->
+      <section class="view is-active" data-view="inicio" aria-labelledby="v-inicio-title">
+        <header class="view__header">
+          <h2 class="view__greeting" id="v-inicio-title">Hola, Carlos 👋</h2>
+          <p class="view__subtitle">Este es tu resumen postural de hoy.</p>
+        </header>
+
+        <div class="status-hero">
+          <span class="pulse-dot pulse-dot--ok" aria-hidden="true"></span>
+          <div class="status-hero__body">
+            <div class="status-hero__label">Buen patrón postural</div>
+            <p class="status-hero__desc">No se detectan patrones que requieran atención.</p>
+          </div>
+        </div>
+
+        <div class="kpi-grid" data-render="kpis"></div>
+
+        <div class="card card--pressure">
+          <div class="card__header">
+            <h3 class="card__title">MAPA DE PRESIÓN</h3>
+            <span class="chip chip--soft">Sesión actual</span>
+          </div>
+
+          <div class="pressure-layout">
+            <div class="pressure-map" data-pressure-map="main"></div>
+            <div class="pressure-side">
+              <div class="pressure-summary">
+                <span class="dot dot--ok"></span>
+                <div>
+                  <strong>Distribución equilibrada</strong>
+                  <p>Mayor contacto en las zonas esperadas.</p>
+                </div>
+              </div>
+              <ul class="pressure-legend-list">
+                <li><span class="swatch swatch--teal"></span> Contacto esperado</li>
+                <li><span class="swatch swatch--amber"></span> Presión puntual</li>
+                <li><span class="swatch swatch--orange"></span> Carga sostenida</li>
+                <li><span class="swatch swatch--empty"></span> Sin contacto</li>
+              </ul>
+              <button class="btn-ghost" data-toggle-details aria-expanded="false">
+                Ver detalles
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--week">
+          <div class="card__header">
+            <h3 class="card__title">ESTA SEMANA</h3>
+            <span class="trend trend--up">↗ Mejorando</span>
+          </div>
+          <ul class="human-list">
+            <li>Tu variabilidad postural aumentó <strong>18%</strong> esta semana.</li>
+            <li>Has realizado pausas con mayor frecuencia que la semana pasada.</li>
+            <li>Los periodos continuos sentado se mantuvieron estables.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- VISTA 2 — MI POSTURA                          -->
+      <!-- ============================================= -->
+      <section class="view" data-view="postura" aria-labelledby="v-postura-title" hidden>
+        <header class="view__header">
+          <h2 class="view__title" id="v-postura-title">Mi postura</h2>
+          <p class="view__subtitle">Los tres pilares: presión, movimiento y tiempo.</p>
+        </header>
+
+        <div class="pillars" data-render="pillars"></div>
+
+        <div class="card card--pressure-secondary">
+          <div class="card__header">
+            <h3 class="card__title">MAPA DE PRESIÓN · SESIÓN ACTUAL</h3>
+            <span class="chip chip--soft">Zonas identificadas</span>
+          </div>
+          <div class="pressure-layout pressure-layout--secondary">
+            <div class="pressure-map" data-pressure-map="secondary"></div>
+            <div class="pressure-side">
+              <ul class="zone-list">
+                <li>
+                  <span class="zone-dot zone-dot--teal"></span>
+                  <div>
+                    <strong>Respaldo superior · escápulas</strong>
+                    <p>Contacto presente y estable.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="zone-dot zone-dot--amber"></span>
+                  <div>
+                    <strong>Zona lumbar</strong>
+                    <p>Apoyo adecuado durante la mayor parte de la sesión.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="zone-dot zone-dot--teal"></span>
+                  <div>
+                    <strong>Asiento · isquiones</strong>
+                    <p>Carga repartida de forma simétrica.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- VISTA 3 — EVOLUCIÓN                           -->
+      <!-- ============================================= -->
+      <section class="view" data-view="evolucion" aria-labelledby="v-evo-title" hidden>
+        <header class="view__header">
+          <h2 class="view__title" id="v-evo-title">Evolución</h2>
+          <p class="view__subtitle">Cómo cambian tus hábitos posturales en el tiempo.</p>
+        </header>
+
+        <div class="range-chips" role="tablist" aria-label="Rango temporal">
+          <button class="chip" data-range="hoy" role="tab" aria-selected="false">Hoy</button>
+          <button class="chip is-active" data-range="7d" role="tab" aria-selected="true">7 días</button>
+          <button class="chip" data-range="30d" role="tab" aria-selected="false">30 días</button>
+        </div>
+
+        <div class="card card--chart">
+          <div class="card__header">
+            <h3 class="card__title">VARIABILIDAD POSTURAL</h3>
+            <span class="chip chip--soft" data-chart-caption>Últimos 7 días</span>
+          </div>
+          <div class="chart" data-chart="variability"></div>
+        </div>
+
+        <div class="conclusion-card">
+          <div class="conclusion-card__bar"></div>
+          <div>
+            <strong>Tu variabilidad postural aumentó 18% esta semana.</strong>
+            <p>Has realizado pausas con mayor frecuencia que la semana pasada.</p>
+          </div>
+        </div>
+
+        <div class="card card--chart">
+          <div class="card__header">
+            <h3 class="card__title">TIEMPO CONTINUO SENTADO</h3>
+            <span class="chip chip--soft">Minutos por día</span>
+          </div>
+          <div class="chart" data-chart="sitting"></div>
+        </div>
+
+        <div class="week-conclusions">
+          <article class="mini-card mini-card--ok">
+            <div class="mini-card__icon">🟢</div>
+            <h4>Mejora</h4>
+            <p>Permaneciste menos tiempo en posiciones laterales prolongadas.</p>
+          </article>
+          <article class="mini-card mini-card--warn">
+            <div class="mini-card__icon">🟡</div>
+            <h4>Oportunidad</h4>
+            <p>Tus periodos continuos sentado aumentaron durante las tardes.</p>
+          </article>
+          <article class="mini-card mini-card--info">
+            <div class="mini-card__icon">🔵</div>
+            <h4>Recomendación</h4>
+            <p>Considera realizar una pausa después de periodos prolongados de sedestación.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- VISTA 4 — RECOMENDACIONES                     -->
+      <!-- ============================================= -->
+      <section class="view" data-view="recomendaciones" aria-labelledby="v-rec-title" hidden>
+        <header class="view__header">
+          <h2 class="view__title" id="v-rec-title">Consejos</h2>
+          <p class="view__subtitle">Sugerencias suaves basadas en tus patrones.</p>
+        </header>
+
+        <div class="tip-grid" data-render="tips"></div>
+
+        <div class="card card--alerts">
+          <div class="card__header">
+            <h3 class="card__title">NIVELES DE ALERTA</h3>
+          </div>
+
+          <div class="alert-levels">
+            <div class="alert-row alert-row--ok">
+              <span class="dot dot--ok"></span>
+              <div><strong>Normal</strong><p>No hacer nada. Todo en orden.</p></div>
+            </div>
+            <div class="alert-row alert-row--amber">
+              <span class="dot dot--amber"></span>
+              <div><strong>Recordatorio</strong><p>«Llevas 50 minutos sentado. Considera cambiar de posición.»</p></div>
+            </div>
+            <div class="alert-row alert-row--orange">
+              <span class="dot dot--orange"></span>
+              <div><strong>Atención</strong><p>«Se detectó una posición lateral mantenida durante un periodo prolongado.»</p></div>
+            </div>
+            <div class="alert-row alert-row--red">
+              <span class="dot dot--red"></span>
+              <div><strong>Acción</strong><p>Reservado para situaciones realmente relevantes.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card--reminder">
+          <h3 class="card__title">¿CUÁNDO QUIERES QUE POSTURA TE RECUERDE MOVERTE?</h3>
+          <div class="slider-wrap">
+            <input type="range" min="20" max="90" value="50" step="5" id="reminderSlider" aria-label="Minutos entre recordatorios">
+            <div class="slider-value"><span id="reminderValue">50</span> min</div>
+          </div>
+          <p class="muted">Postura te avisará de forma discreta cuando lleves ese tiempo continuo sentado.</p>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- VISTA 5 — CONFIGURACIÓN                       -->
+      <!-- ============================================= -->
+      <section class="view" data-view="configuracion" aria-labelledby="v-cfg-title" hidden>
+        <header class="view__header">
+          <h2 class="view__title" id="v-cfg-title">Configuración</h2>
+          <p class="view__subtitle">Ajustes del dispositivo y de tu cuenta.</p>
+        </header>
+
+        <div class="card">
+          <h3 class="card__title">DISPOSITIVO CONECTADO</h3>
+          <div class="row">
+            <div>
+              <div class="row__main">Silla POSTURA · Modelo 02</div>
+              <div class="row__sub">Última sincronización: hoy, 14:32</div>
+            </div>
+            <span class="status-pill status-pill--ok"><span class="dot dot--ok"></span>Conectada</span>
+          </div>
+        </div>
+
+        <div class="card card--privacy">
+          <h3 class="card__title">PRIVACIDAD</h3>
+          <p class="privacy-tagline">🔒 Tus datos posturales son tuyos.</p>
+          <ul class="settings-list">
+            <li><span>Datos almacenados</span><span class="settings-value">24 MB</span></li>
+            <li><span>Exportar datos</span><button class="btn-ghost">Exportar</button></li>
+            <li><span>Eliminar datos</span><button class="btn-ghost btn-ghost--danger">Eliminar</button></li>
+            <li><span>Sesiones activas</span><span class="settings-value">1 dispositivo</span></li>
+            <li><span>Permisos</span><span class="settings-value">Notificaciones · Activadas</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">ALERTAS Y RECORDATORIOS</h3>
+          <ul class="settings-list">
+            <li><span>Frecuencia</span><span class="settings-value">Cada 50 min</span></li>
+            <li><span>Intensidad de vibración</span><span class="settings-value">Suave</span></li>
+            <li><span>Horario activo</span><span class="settings-value">09:00 – 19:00</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">CUENTA</h3>
+          <ul class="settings-list">
+            <li><span>Perfil</span><span class="settings-value">Carlos</span></li>
+            <li><span>Cerrar sesión</span><button class="btn-ghost">Salir</button></li>
+          </ul>
+        </div>
+
+        <p class="safe-note">Datos almacenados de forma segura.</p>
+      </section>
+      
+      <!-- ============================================= -->
+      <!-- VISTA 6 — SOBRE NOSOTROS                      -->
+      <!-- ============================================= -->
+      <section class="view" data-view="sobre-nosotros" aria-labelledby="v-about-title" hidden>
+        <header class="view__header">
+          <h2 class="view__title" id="v-about-title">Sobre nosotros</h2>
+          <p class="view__subtitle">El equipo y la visión detrás de POSTURA.</p>
+        </header>
+
+        <div class="card card--alerts">
+          <div class="card__header">
+            <h3 class="card__title">EL PROBLEMA Y NUESTRO IMPACTO</h3>
+          </div>
+          <div class="alert-levels">
+            <div class="alert-row alert-row--orange">
+              <span class="dot dot--orange"></span>
+              <div>
+                <strong>El Problema a resolver: Lumbalgia</strong>
+                <p>La lumbalgia es una de las principales causas de discapacidad laboral. Las malas posturas y el sedentarismo disminuyen la calidad de vida y merman la productividad.</p>
+              </div>
+            </div>
+            <div class="alert-row alert-row--ok">
+              <span class="dot dot--ok"></span>
+              <div>
+                <strong>ODS 3: Bienestar y Salud</strong>
+                <p>Nuestra solución interviene de manera directa en el ODS 3, garantizando una vida sana y promoviendo el bienestar mediante la prevención tecnológica de trastornos musculoesqueléticos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__title">INTEGRANTES DEL EQUIPO</h3>
+          </div>
+          <ul class="human-list">
+            <li><strong>Ángela Estrella Becerra Aguilar</strong></li>
+            <li><strong>Joaquín Gutiérrez Díaz</strong></li>
+            <li><strong>Francisco José Magdaleno Lisjuan</strong></li>
+            <li><strong>Maya Iyar García Valadez</strong></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__title">PLAN DE NEGOCIO A PROFUNDIDAD</h3>
+          </div>
+          <div class="business-plan">
+            <div class="bp-section">
+              <strong>1. Propuesta de Valor</strong>
+              <p>Ofrecemos hardware IoT integrado (silla/cojín inteligente) y software de análisis postural en tiempo real que previene la lumbalgia mediante alertas tempranas y corrección de hábitos de sedestación.</p>
+            </div>
+            <div class="bp-section">
+              <strong>2. Segmentos de Mercado (B2B & B2C)</strong>
+              <p>Nos enfocamos en dos vías: usuarios individuales (trabajadores remotos, freelancers, gamers) y mercado corporativo (empresas enfocadas en la salud ocupacional y la retención de talento).</p>
+            </div>
+            <div class="bp-section">
+              <strong>3. Modelo de Ingresos</strong>
+              <p>Basado en un modelo mixto: Venta del dispositivo físico (margen directo por hardware) y modelo SaaS Freemium para el software (suscripciones premium para empresas con análisis de datos agregados de su plantilla).</p>
+            </div>
+            <div class="bp-section">
+              <strong>4. Estructura de Costos</strong>
+              <p>Contempla la manufactura y ensamble de matrices de presión, I+D de algoritmos, mantenimiento de la infraestructura en la nube (servidores de datos) y presupuesto destinado a marketing digital/B2B.</p>
+            </div>
+            <div class="bp-section">
+              <strong>5. Canales y Alianzas Clave</strong>
+              <p>Venta Directa al Consumidor (D2C) a través de e-commerce propio. Alianzas estratégicas con fabricantes de mobiliario ergonómico, clínicas de fisioterapia y empresas aseguradoras buscando reducir reclamos médicos preventivos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============ NAV MÓVIL ============ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Navegación inferior">
+    <button class="bottom-nav__item is-active" data-view="inicio" aria-current="page">
+      <span aria-hidden="true">🏠</span><span class="bottom-nav__label">Inicio</span>
+    </button>
+    <button class="bottom-nav__item" data-view="postura">
+      <span aria-hidden="true">📊</span><span class="bottom-nav__label">Postura</span>
+    </button>
+    <button class="bottom-nav__item" data-view="evolucion">
+      <span aria-hidden="true">📈</span><span class="bottom-nav__label">Evolución</span>
+    </button>
+    <button class="bottom-nav__item" data-view="recomendaciones">
+      <span aria-hidden="true">💡</span><span class="bottom-nav__label">Consejos</span>
+    </button>
+    <button class="bottom-nav__item" data-view="configuracion">
+      <span aria-hidden="true">⚙️</span><span class="bottom-nav__label">Ajustes</span>
+    </button>
+    <button class="bottom-nav__item" data-view="sobre-nosotros">
+      <span aria-hidden="true">👥</span><span class="bottom-nav__label">Nosotros</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Toast sutil para recordatorios -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  <span class="dot dot--amber"></span>
+  <span>Llevas 50 minutos sentado. Considera cambiar de posición.</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
